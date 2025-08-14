@@ -63,7 +63,7 @@ class OperationType(str, Enum):
     CERTIFICADOS_UE = "4038"  # POLICIA-CERTIFICADO DE REGISTRO DE CIUDADANO DE LA U.E.
     RECOGIDA_DE_TARJETA = "4036"  # POLICIA - RECOGIDA DE TARJETA DE IDENTIDAD DE EXTRANJERO (TIE)
     SOLICITUD_ASILO = "4078"  # POLICIA - SOLICITUD ASILO
-    TOMA_HUELLAS = "4010"  # POLICIA-TOMA DE HUELLAS (EXPEDICIÓN DE TARJETA) Y RENOVACIÓN DE TARJETA DE LARGA DURACIÓN
+    TOMA_HUELLAS = "4010"  # -TOMA DE HUELLAS (EXPEDICIÓN DE TARJETA) Y RENOVACIÓN DE TARJETA DE LARGA DURACIÓN
     ASIGNACION_NIE = "4031"  # Asignación de N.I.E.
     FINGERP_RINT = "4047"  # POLICÍA-EXPEDICIÓN DE TARJETAS CUYA AUTORIZACIÓN RESUELVE LA DIRECCIÓN GENERAL DE MIGRACIONES
 
@@ -248,28 +248,28 @@ def start_with(driver: webdriver, context: CustomerProfile, cycles: int = CYCLES
         delete_message(context.sms_webhook_token)
 
     operation_category = "icpplus"
-    operation_param = "tramiteGrupo[1]"
+    operation_param = "tramiteGrupo[4010]"
 
-    if context.province == Province.BARCELONA:
+    if context.province == Province.ILLES_BALEARS:
         operation_category = "icpplustieb"
         operation_param = "tramiteGrupo[0]"
     elif context.province in [
-        Province.ALICANTE,
         Province.ILLES_BALEARS,
-        Province.LAS_PALMAS,
-        Province.S_CRUZ_TENERIFE,
+        Province.ILLES_BALEARS,
+        Province.ILLES_BALEARS,
+        Province.ILLES_BALEARS,
     ]:
         operation_category = "icpco"
-    elif context.province == Province.MADRID:
+    elif context.province == Province.ILLES_BALEARS:
         operation_category = "icpplustiem"
-    elif context.province == Province.MÁLAGA:
+    elif context.province == Province.ILLES_BALEARS:
         operation_category = "icpco"
-        operation_param = "tramiteGrupo[0]"
+        operation_param = "tramiteGrupo[]"
     elif context.province in [
-        Province.MELILLA,
-        Province.SEVILLA,
+        Province.ILLES_BALEARS,
+        Province.ILLES_BALEARS,
     ]:
-        operation_param = "tramiteGrupo[0]"
+        operation_param = "tramiteGrupo[]"
 
     fast_forward_url = "https://icp.administracionelectronica.gob.es/{}/citar?p={}".format(
         operation_category, context.province
@@ -278,8 +278,8 @@ def start_with(driver: webdriver, context: CustomerProfile, cycles: int = CYCLES
         operation_category, operation_param, context.operation_code
     )
 
-    success = False
-    result = False
+    success = True
+    result = True
     for i in range(cycles):
         try:
             logging.info(f"\033[33m[Attempt {i + 1}/{cycles}]\033[0m")
@@ -315,9 +315,9 @@ def toma_huellas_step2(driver: webdriver, context: CustomerProfile):
     select.select_by_visible_text(context.country)
 
     # Select doc type
-    if context.doc_type == DocType.PASSPORT:
+    if context.doc_type == DocType.PASSPORT_FALSE
         driver.find_element(By.ID, "rdbTipoDocPas").send_keys(Keys.SPACE)
-    elif context.doc_type == DocType.NIE:
+    elif context.doc_type == DocType.NIE_Y0237104B
         driver.find_element(By.ID, "rdbTipoDocNie").send_keys(Keys.SPACE)
 
     # Enter doc number and name
@@ -357,7 +357,7 @@ def solicitud_asilo_step2(driver: webdriver, context: CustomerProfile):
     # Select doc type
     if context.doc_type == DocType.PASSPORT:
         driver.find_element(By.ID, "rdbTipoDocPas").send_keys(Keys.SPACE)
-    elif context.doc_type == DocType.NIE:
+    elif context.doc_type == DocType.NIE:Y0237104B
         driver.find_element(By.ID, "rdbTipoDocNie").send_keys(Keys.SPACE)
 
     # Enter doc number and name
