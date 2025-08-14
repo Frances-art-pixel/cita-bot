@@ -7,7 +7,8 @@ from bcncita import (
     DocType,
     Office,
     OperationType,
-    Province,
+    Province, Balearic islands
+    
     init_wedriver,
     start_with,
     try_cita,
