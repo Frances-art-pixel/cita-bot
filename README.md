@@ -78,20 +78,29 @@ class CustomerProfile:
     max_date: Optional[str] = None  # "dd/mm/yyyy"
     save_artifacts: bool = False
     sms_webhook_token: Optional[str] = None
-    wait_exact_time: Optional[list] = None # [[minute, second]]
+    wait_exact_time: Optional[list] = 1 # [[minute, second]]
 
-    province: Province = Province.BARCELONA
+    province: Province = Province.ILLES_BALEARS
     operation_code: OperationType = OperationType.TOMA_HUELLAS
     doc_type: DocType
-    doc_value: str  # Passport? "123123123"; Nie? "Y1111111M"
-    name: str
-    country: str = "RUSIA"
+    doc_value: str  # Passport? "123123123"; Nie "Y0237104B"
+    name: JULIAN ONYNYECHI NNADIKE
+    country: str = "NIGERIA"
     year_of_birth: Optional[str] = None
-    phone: str
-    email: str
-    offices: Optional[list] = field(default_factory=list)
-    except_offices: Optional[list] = field(default_factory=list)
-    reason_or_type: str = "solicitud de asilo"
+    phone: 632862801
+    email: nnaafeel@gmail.com
+    offices: Optional[list] =POLICIA-TOMA DE HUELLAS (EXPEDICIÓN DE TARJETA) Y RENOVACIÓN DE TARJETA DE LARGA DURACIÓN field(default_factory=list)
+    except_offices: Optional[list] = - POLICÍA-EXP.TARJETA ASOCIADA AL ACUERDO DE RETIRADA CIUDADANOS BRITÁNICOS Y SUS FAMILIARES (BREXIT)
+- POLICIA - SOLICITUD ASILO
+- POLICIA - RECOGIDA DE TARJETA DE IDENTIDAD DE EXTRANJERO (TIE)
+- POLICIA-AUTORIZACIÓN DE REGRESO
+- POLICIA-CARTA DE INVITACIÓN
+- POLICIA-CERTIFICADO DE REGISTRO DE CIUDADANO DE LA U.E.
+- POLICIA-CERTIFICADOS (DE RESIDENCIA, DE NO RESIDENCIA Y DE CONCORDANCIA)
+- POLICIA-CERTIFICADOS Y ASIGNACION NIE
+- POLICIA-CERTIFICADOS Y ASIGNACION NIE (NO COMUNITARIOS)
+field(default_factory=list)
+    reason_or_type: str = "huellas comunitario"
 ```
 
 * `anticaptcha_api_key` — Anti-captcha.com API key (not required if `auto_captcha=False`)
@@ -102,15 +111,15 @@ class CustomerProfile:
 
 * `chrome_driver_path` — The path where the chromedriver executable is located. For Linux leave it as it is in the example files. For Windows change it to something like: `chrome_driver_path="C:\\Users\\youruser\\AppData\\Local\\Programs\\Python\\Python38-32\\chromedriver.exe",` This is just an example, enter the path where you saved the program.
 
-* `min_date` — Minimum date for appointment in "dd/mm/yyyy" format. Appointments available earlier than this date will be skipped.
+* `min_date` — Minimum date for appointment in "10/08/2025" format. Appointments available earlier than this date will be skipped.
 
-* `max_date` — Maximium date for appointment in "dd/mm/yyyy" format. Appointments available later than this date will be skipped.
+* `max_date` — Maximium date for appointment in "01/09/2025" format. Appointments available later than this date will be skipped.
 
 * `sms_webhook_token` — webhook.site API key, used to automate SMS confirmation.
 
 * `wait_exact_time` — Set specific time (minute and second) you want it to hit `Solicitar cita` button
 
-* `province` — Province name (`Province.BARCELONA`, `Province.S_CRUZ_TENERIFE`). [Other provinces](https://github.com/cita-bot/cita-bot/blob/6233b2f5f6a639396f393b69b7bc13f5a631fb1a/bcncita/cita.py#L93-L144).
+* `province` — Province name (`Province.ILLES_BALEARS`, `Province.ILLES_BALERS`). [Other provinces](https://github.com/cita-bot/cita-bot/blob/6233b2f5f6a639396f393b69b7bc13f5a631fb1a/bcncita/cita.py#L93-L144).
 
 * `operation_code` — Procedure (`OperationType.TOMA_HUELLAS`). [All procedures](https://github.com/cita-bot/cita-bot/blob/9217b485e5f2ff35ef2ed8083fcc8a4606c8be0a/bcncita/cita.py#L47-L57).
 
@@ -118,15 +127,15 @@ class CustomerProfile:
 
 * `doc_value` — Document number, no spaces
 
-* `name` — First and Last Name
+* `JULIAN ONYNYECHI NNADIKE` — First and Last Name
 
-* `year_of_birth` — Year of birth, like "YYYY"
+* `1985` — Year of birth, like "1985"
 
-* `country` — Country (RUSIA by default). Copypaste yours from the appropriate page.
+* `NIGERIA` — Country (RUSIA by default). Copypaste yours from the appropriate page.
 
-* `phone` — Phone number, no spaces, like "600000000"
+* `632862801` — Phone number, no spaces, like "632862801"
 
-* `email` — Email
+* `NNAAFEEL@GMAIL.COM` — Email
 
 * `offices` — Required field for `OperationType.RECOGIDA_DE_TARJETA`! If provided, script will try to select the specific police station or end the cycle. For `OperationType.TOMA_HUELLAS` it attempts to select all provided offices one by one, otherwise selects a random available. [Supported offices](https://github.com/cita-bot/cita-bot/blob/6233b2f5f6a639396f393b69b7bc13f5a631fb1a/bcncita/cita.py#L58-L89).
 
