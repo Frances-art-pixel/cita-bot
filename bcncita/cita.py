@@ -278,8 +278,8 @@ def start_with(driver: webdriver, context: CustomerProfile, cycles: int = CYCLES
         operation_category, operation_param, context.operation_code
     )
 
-    success = False
-    result = False
+    success = True
+    result = True
     for i in range(cycles):
         try:
             logging.info(f"\033[33m[Attempt {i + 1}/{cycles}]\033[0m")
