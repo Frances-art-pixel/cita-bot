@@ -74,24 +74,32 @@ class CustomerProfile:
     auto_captcha: bool = True
     auto_office: bool = True
     chrome_driver_path: str = None
-    min_date: Optional[str] = None  # "dd/mm/yyyy"
-    max_date: Optional[str] = None  # "dd/mm/yyyy"
+    min_date: Optional[str] = None  # "01/08/2025"
+    max_date: Optional[str] = None  # "01/09/2025"
     save_artifacts: bool = False
     sms_webhook_token: Optional[str] = None
     wait_exact_time: Optional[list] = None # [[minute, second]]
 
-    province: Province = Province.BARCELONA
+    province: Province = Province.ILLES_BALEARS
     operation_code: OperationType = OperationType.TOMA_HUELLAS
     doc_type: DocType
-    doc_value: str  # Passport? "123123123"; Nie? "Y1111111M"
-    name: str
-    country: str = "RUSIA"
+    doc_value: str  # Passport? "123123123"; Nie "Y0237104B"
+    name: JULIAN ONYNYECHI NNADIKE
+    country: str = "NIGERIA"
     year_of_birth: Optional[str] = None
-    phone: str
-    email: str
-    offices: Optional[list] = field(default_factory=list)
-    except_offices: Optional[list] = field(default_factory=list)
-    reason_or_type: str = "solicitud de asilo"
+    phone: 632862801
+    email: nnaafeel@gmail.com
+    offices: Optional[list] = - POLICIA-TOMA DE HUELLAS (EXPEDICIÓN DE TARJETA) Y RENOVACIÓN DE TARJETA DE LARGA DURACIÓN field(default_factory=list)
+    except_offices: Optional[list] = 
+- POLICIA - SOLICITUD ASILO
+- POLICIA - RECOGIDA DE TARJETA DE IDENTIDAD DE EXTRANJERO (TIE)
+- POLICIA-AUTORIZACIÓN DE REGRESO
+- POLICIA-CARTA DE INVITACIÓN
+- POLICIA-CERTIFICADO DE REGISTRO DE CIUDADANO DE LA U.E.
+- POLICIA-CERTIFICADOS (DE RESIDENCIA, DE NO RESIDENCIA Y DE CONCORDANCIA)
+- POLICIA-CERTIFICADOS Y ASIGNACION NIE
+- POLICIA-CERTIFICADOS Y ASIGNACION NIE (NO COMUNITARIOS)POLICÍA-EXP.TARJETA ASOCIADA AL ACUERDO DE RETIRADA CIUDADANOS BRITÁNICOS Y SUS FAMILIARES (BREXIT) field(default_factory=list)
+    reason_or_type: str = "toma de huellas comunitario"
 ```
 
 * `anticaptcha_api_key` — Anti-captcha.com API key (not required if `auto_captcha=False`)
